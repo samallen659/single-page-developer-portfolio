@@ -6,7 +6,7 @@ import { twitterIcon } from '../assets/images/icon-twitter.svg';
 
 const Navbar = () => {
 	return (
-		<nav data-testid='navbar' className='flex justify-between'>
+		<nav data-testid='navbar' className='flex-col md:flex-row justify-between'>
 			<h4>adamkeyes</h4>
 			<div data-testid='links'>
 				<a href='https://github.com'>

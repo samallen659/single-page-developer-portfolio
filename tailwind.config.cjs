@@ -9,7 +9,14 @@ module.exports = {
 				'neutral-dark': '#242424',
 				'neutral-light': '#d9d9d9',
 			},
+			container: {
+				center: true,
+				padding: {
+					DEFAULT: '1rem',
+				},
+			},
 		},
+		fontFamily: ['Space Grotesk', 'sans-serif'],
 	},
 	plugins: [],
 };

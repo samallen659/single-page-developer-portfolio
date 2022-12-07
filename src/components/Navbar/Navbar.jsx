@@ -6,7 +6,7 @@ import twitterIcon from '../../assets/images/icon-twitter.svg';
 
 const Navbar = () => {
 	return (
-		<nav data-testid='navbar' className='flex flex-col md:flex-row pt-5 md:justify-between items-center'>
+		<nav data-testid='navbar' className='flex flex-col md:flex-row pt-5 md:justify-between items-center absolute w-full z-50'>
 			<h4 className='text-white text-2xl pb-5 font-bold md:text-3xl'>adamkeyes</h4>
 			<div data-testid='links' className='flex gap-6'>
 				<a href='https://github.com'>

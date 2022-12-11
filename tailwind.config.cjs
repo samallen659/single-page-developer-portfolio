@@ -18,5 +18,5 @@ module.exports = {
 		},
 		fontFamily: ['Space Grotesk', 'sans-serif'],
 	},
-	plugins: [],
+	plugins: [require('prettier-plugin-tailwindcss')],
 };

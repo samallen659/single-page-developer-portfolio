@@ -13,6 +13,9 @@ function App() {
 				<Skills />
 				<Projects />
 			</main>
+			<footer>
+				
+			</footer>
 		</div>
 	);
 }

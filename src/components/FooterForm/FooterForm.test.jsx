@@ -4,28 +4,27 @@ import { describe, expect, it, vi } from 'vitest';
 import { FooterForm } from './FooterForm';
 
 describe('FooterForm', () => {
-	const expectFieldByRole = (role, name) => {
-		const nameRegEx = new RegExp(name, 'i');
+	const expectInputField = (name) => {
 		return it(`renders the ${name} field`, () => {
 			render(<FooterForm />);
-			expect(screen.getByRole(role, { name: nameRegEx })).toBeTruthy();
+			expect(screen.getByTestId(`${name}-input`)).toBeTruthy();
 		});
 	};
 	it('renders a form', () => {
 		render(<FooterForm />);
 		expect(screen.getByTestId('form')).toBeTruthy();
 	});
-	expectFieldByRole('textbox', 'name');
-	expectFieldByRole('textbox', 'email');
-	expectFieldByRole('textbox', 'message');
+	expectInputField('name');
+	expectInputField('email');
+	expectInputField('message');
 	it('calls onSubmit with valid inputs', async () => {
 		const spyOnSubmit = vi.fn();
 		render(<FooterForm onSubmit={spyOnSubmit} />);
 
 		await act(async () => {
-			fireEvent.change(screen.getByRole('textbox', { name: /name/i }), { target: { value: 'Sam' } });
-			fireEvent.change(screen.getByRole('textbox', { name: /email/i }), { target: { value: 'Sam@email.com' } });
-			fireEvent.change(screen.getByRole('textbox', { name: /message/i }), { target: { value: 'This is a message' } });
+			fireEvent.change(screen.getByTestId('name-input'), { target: { value: 'Sam' } });
+			fireEvent.change(screen.getByTestId('email-input'), { target: { value: 'Sam@email.com' } });
+			fireEvent.change(screen.getByTestId('message-input'), { target: { value: 'This is a message' } });
 		});
 
 		await act(async () => {
@@ -39,9 +38,9 @@ describe('FooterForm', () => {
 		render(<FooterForm onSubmit={spyOnSubmit} />);
 
 		await act(async () => {
-			fireEvent.change(screen.getByRole('textbox', { name: /name/i }), { target: { value: 'Sam' } });
-			fireEvent.change(screen.getByRole('textbox', { name: /email/i }), { target: { value: 'invalid' } });
-			fireEvent.change(screen.getByRole('textbox', { name: /message/i }), { target: { value: 'This is a message' } });
+			fireEvent.change(screen.getByTestId('name-input'), { target: { value: 'Sam' } });
+			fireEvent.change(screen.getByTestId('email-input'), { target: { value: 'invalid' } });
+			fireEvent.change(screen.getByTestId('message-input'), { target: { value: 'This is a message' } });
 		});
 
 		await act(async () => {
@@ -55,8 +54,8 @@ describe('FooterForm', () => {
 		render(<FooterForm onSubmit={spyOnSubmit} />);
 
 		await act(async () => {
-			fireEvent.change(screen.getByRole('textbox', { name: /email/i }), { target: { value: 'Sam@email.com' } });
-			fireEvent.change(screen.getByRole('textbox', { name: /message/i }), { target: { value: 'This is a message' } });
+			fireEvent.change(screen.getByTestId('email-input'), { target: { value: 'Sam@email.com' } });
+			fireEvent.change(screen.getByTestId('message-input'), { target: { value: 'This is a message' } });
 		});
 
 		await act(async () => {
@@ -70,8 +69,8 @@ describe('FooterForm', () => {
 		render(<FooterForm onSubmit={spyOnSubmit} />);
 
 		await act(async () => {
-			fireEvent.change(screen.getByRole('textbox', { name: /name/i }), { target: { value: 'Sam' } });
-			fireEvent.change(screen.getByRole('textbox', { name: /email/i }), { target: { value: 'Sam@email.com' } });
+			fireEvent.change(screen.getByTestId('name-input'), { target: { value: 'Sam' } });
+			fireEvent.change(screen.getByTestId('email-input'), { target: { value: 'Sam@email.com' } });
 		});
 
 		await act(async () => {

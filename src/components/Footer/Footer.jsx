@@ -3,8 +3,11 @@ import { FooterForm } from '../FooterForm/FooterForm';
 
 const Footer = () => {
 	return (
-		<div>
-			<FooterForm />
+		<div className='flex basis-1/2 flex-col py-4'>
+			<div></div>
+			<div>
+				<FooterForm />
+			</div>
 		</div>
 	);
 };

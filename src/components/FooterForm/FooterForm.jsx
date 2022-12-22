@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from '../Button/Button';
-import { FormikConsumer, useFormik } from 'formik';
+import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 const FooterForm = ({ onSubmit }) => {
@@ -11,14 +11,16 @@ const FooterForm = ({ onSubmit }) => {
 			message: '',
 		},
 		validationSchema: Yup.object({
-			name: Yup.string().required(),
+			name: Yup.string().max(30).required(),
 			email: Yup.string().email().required(),
-			message: Yup.string().required(),
+			message: Yup.string().max(300).required(),
 		}),
 		onSubmit: (values) => {
 			onSubmit();
 		},
 	});
+
+	console.log(formik.errors);
 
 	return (
 		<form data-testid='form' onSubmit={formik.handleSubmit}>
@@ -29,7 +31,7 @@ const FooterForm = ({ onSubmit }) => {
 				value={formik.values.name}
 				onChange={formik.handleChange}
 				placeholder='NAME'
-				className='border-none'
+				className='border-none bg-primary ring-0'
 			/>
 			<div className='w-full border-b border-neutral-dark'></div>
 			<input
@@ -39,6 +41,7 @@ const FooterForm = ({ onSubmit }) => {
 				value={formik.values.email}
 				onChange={formik.handleChange}
 				placeholder='EMAIL'
+				className='bg-primary'
 			/>
 			<div className='w-full border-b border-neutral-dark'></div>
 			<input
@@ -48,6 +51,7 @@ const FooterForm = ({ onSubmit }) => {
 				value={formik.values.message}
 				onChange={formik.handleChange}
 				placeholder='MESSAGE'
+				className='bg-primary'
 			/>
 			<div className='w-full border-b border-neutral-dark'></div>
 			<button
